@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>a letter for you</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Pinyon+Script&family=Caveat:wght@500&family=Special+Elite&family=Pacifico&family=Nunito:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--ink);transition:background .6s}
+body[data-t="night"]{--bg:#0e1430;--paper:#161d44;--ink:#f1e8d0;--acc:#e6c675;--ft:'Cormorant Garamond',Georgia,serif;--fd:'Pinyon Script',cursive;--fb:'Caveat',cursive;--sh:0 0 50px rgba(230,198,117,.18);--pc:#fff7d6;--pr:50%;--pw:3px;--ph:3px}
+body[data-t="vintage"]{--bg:#c9a97c;--paper:#f3e6c8;--ink:#3b2a1a;--acc:#9b3a2c;--ft:'Special Elite',monospace;--fd:'Special Elite',monospace;--fb:'Special Elite',monospace;--sh:0 12px 30px rgba(59,42,26,.35);--pc:#7a5a36;--pr:50%;--pw:2px;--ph:2px}
+body[data-t="garden"]{--bg:#e3ecd9;--paper:#fbfcf6;--ink:#33402c;--acc:#6f8f5a;--ft:'Pacifico',cursive;--fd:'Pacifico',cursive;--fb:'Nunito',sans-serif;--sh:0 12px 34px rgba(80,110,60,.2);--pc:#9cc27d;--pr:80% 0 80% 0;--pw:11px;--ph:15px}
+#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.pt{position:absolute;top:-20px;width:var(--pw);height:var(--ph);background:var(--pc);border-radius:var(--pr);opacity:.75;animation:fall linear infinite}
+body[data-t="night"] .pt{top:auto;animation:tw 3s ease-in-out infinite}
+body[data-t="garden"] .pt.ff{top:auto;width:5px;height:5px;border-radius:50%;background:#f6e27a;box-shadow:0 0 10px #f6e27a;animation:tw 4s ease-in-out infinite}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(540deg)}}
+@keyframes tw{50%{opacity:.1;transform:scale(.4)}}
+#intro{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;cursor:pointer;transition:opacity 1.2s,transform 1.2s;font-family:var(--ft);color:var(--ink)}
+body[data-t="night"] #intro{background:radial-gradient(circle at 70% 22%,#fff7d6 0 5%,#e6c675 6%,transparent 7%),radial-gradient(circle at 70% 22%,rgba(230,198,117,.25),transparent 30%),linear-gradient(#070b20,#1b2352)}
+body[data-t="vintage"] #intro{background:#c9a97c}
+body[data-t="garden"] #intro{background:radial-gradient(circle at 20% 25%,#cfe0bd 0 16%,transparent 17%),radial-gradient(circle at 80% 70%,#bcd5a5 0 20%,transparent 21%),radial-gradient(circle at 30% 85%,#d9e8c8 0 14%,transparent 15%),#e8f0de}
+#intro.gone{opacity:0;transform:scale(1.1);pointer-events:none}
+#intro .hint{background:var(--paper);padding:12px 24px;border-radius:999px;font-size:1.05rem;box-shadow:var(--sh)}
+.env{display:none;position:relative;width:240px;height:160px;background:#e8d3a8;box-shadow:var(--sh)}
+body[data-t="vintage"] .env{display:block}
+.env:before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom right,transparent 49.5%,#d4bc8a 50%) left/50% 100% no-repeat,linear-gradient(to bottom left,transparent 49.5%,#d4bc8a 50%) right/50% 100% no-repeat}
+.env:after{content:"";position:absolute;left:0;right:0;top:0;height:90px;background:#dcc594;clip-path:polygon(0 0,100% 0,50% 100%)}
+.seal{position:absolute;z-index:2;left:50%;top:70px;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:var(--acc);box-shadow:0 2px 6px rgba(0,0,0,.4)}
+main{position:relative;z-index:2;min-height:100vh;display:flex;justify-content:center;padding:34px 16px 56px}
+.card{width:100%;max-width:440px;align-self:flex-start;background:var(--paper);box-shadow:var(--sh);padding:48px 30px 40px;opacity:0;transform:translateY(14px);transition:opacity 1s .5s,transform 1s .5s;border-radius:2px}
+body[data-t="night"] .card{border:1px solid rgba(230,198,117,.4)}
+body[data-t="garden"] .card{border-radius:26px}
+.open .card{opacity:1;transform:none}
+h1{font:500 2rem/1.1 var(--ft);text-align:center;margin:0;color:var(--acc)}
+body[data-t="garden"] h1{font-size:1.7rem}
+.line{height:1px;margin:16px 0 18px;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
+.date{text-align:center;font:.85rem var(--fb);opacity:.75;margin-bottom:26px}
+.dear{font:2.6rem/1.2 var(--fd);color:var(--acc);margin-bottom:18px;min-height:1.2em}
+body[data-t="vintage"] .dear{font-size:1.5rem}
+body[data-t="garden"] .dear{font-size:1.6rem}
+.body{font:1.35rem/1.7 var(--fb);white-space:pre-wrap;min-height:6em}
+body[data-t="vintage"] .body{font-size:1rem}
+body[data-t="garden"] .body{font-size:1.05rem}
+.body:after{content:"|";opacity:.6;animation:b 1s steps(1) infinite}
+.done .body:after{display:none}
+@keyframes b{50%{opacity:0}}
+.sign{margin-top:26px;font:1.2rem var(--fb);opacity:0;transition:opacity 1.5s}
+.sign b{display:block;text-align:right;font:2rem var(--fd);font-weight:400;color:var(--acc);margin-top:8px}
+body[data-t="vintage"] .sign b{font-size:1.1rem}
+body[data-t="garden"] .sign b{font-size:1.3rem}
+.done .sign{opacity:1}
+.sw{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:10px;z-index:9;display:flex;gap:6px}
+.sw button{font:600 .75rem system-ui,sans-serif;padding:7px 12px;border-radius:999px;border:1px solid var(--acc);background:var(--paper);color:var(--ink);cursor:pointer}
+.sw button[aria-pressed="true"]{background:var(--acc);color:var(--paper)}
+.sw button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.pt{display:none}}
+</style>
+</head>
+<body data-t="night">
+<div id="fx" aria-hidden="true"></div>
+<div class="sw" id="sw"></div>
+<div id="intro" tabindex="0" role="button" aria-label="Buka surat">
+  <div class="env"><div class="seal"></div></div>
+  <div class="hint">sentuh untuk membuka</div>
+</div>
+<main id="main">
+  <article class="card">
+    <h1 id="title"></h1>
+    <div class="line"></div>
+    <div class="date" id="date"></div>
+    <div class="dear" id="dear"></div>
+    <div class="body" id="body"></div>
+    <div class="sign"><span id="closing"></span><b id="from"></b></div>
+  </article>
+</main>
+<script>
+/* ===== UBAH ISI DI SINI (atau lewat link: ?theme=night|vintage|garden&to=&from=&date=&msg=) ===== */
+const C = {
+  title: "love letter",
+  to: "Moi",
+  from: "for lovely",
+  date: "8 oktober 2026",
+  closing: "semangat terus yaa,",
+  msg: "SEMANGATT YAA MOII LESNYAA!!\n\nJANGANNN LUPA MAKANN DANN ISTIRAHATT YAA..\n\nKALO CAPEK BOLEH BANGET BERHENTI SEBENTAR, MINUM AIR PUTIH DULU YAA\n\nKAMU HEBATT, UDAH SAMPAI SEJAUH INI ITU KEREN BANGETT\n\nPELAN-PELAN AJA YANG PENTING JALAN TERUSS"
+};
+const T = { night: "Night", vintage: "Vintage", garden: "Garden" };
+const q = new URLSearchParams(location.search);
+for (const k of Object.keys(C)) if (q.get(k)) C[k] = q.get(k).replace(/\\n/g, "\n");
+let theme = T[q.get("theme")] ? q.get("theme") : "night";
+
+const $ = id => document.getElementById(id);
+document.title = C.title;
+$("title").textContent = C.title; $("date").textContent = C.date;
+$("closing").textContent = C.closing; $("from").textContent = C.from;
+
+function fx() {
+  const box = $("fx"); box.innerHTML = "";
+  const n = theme === "vintage" ? 10 : 26;
+  for (let i = 0; i < n; i++) {
+    const p = document.createElement("div");
+    p.className = "pt" + (theme === "garden" && i % 3 === 0 ? " ff" : "");
+    p.style.left = Math.random() * 100 + "%";
+    p.style.top = (theme === "night" || p.classList.contains("ff")) ? Math.random() * 100 + "%" : "";
+    p.style.setProperty("--dx", (Math.random() * 120 - 60) + "px");
+    p.style.animationDuration = (theme === "night" ? 2 + Math.random() * 4 : 9 + Math.random() * 9) + "s";
+    p.style.animationDelay = -Math.random() * 12 + "s";
+    box.appendChild(p);
+  }
+}
+function setTheme(t) {
+  theme = t; document.body.dataset.t = t; fx();
+  document.querySelectorAll(".sw button").forEach(b => b.setAttribute("aria-pressed", b.dataset.t === t));
+}
+for (const t in T) {
+  const b = document.createElement("button");
+  b.textContent = T[t]; b.dataset.t = t;
+  b.onclick = () => setTheme(t);
+  $("sw").appendChild(b);
+}
+setTheme(theme);
+
+function type(el, text, speed, cb) {
+  let i = 0;
+  (function step() {
+    el.textContent = text.slice(0, ++i);
+    if (i < text.length) setTimeout(step, speed + (/[.,\n]/.test(text[i - 1]) ? 120 : 0));
+    else cb && cb();
+  })();
+}
+let started = false;
+function openLetter() {
+  if (started) return; started = true;
+  $("intro").classList.add("gone");
+  const m = $("main"); m.classList.add("open");
+  setTimeout(() => type($("dear"), "Dear " + C.to + ",", 80, () =>
+    setTimeout(() => type($("body"), C.msg, 38, () => m.classList.add("done")), 400)), 1500);
+}
+$("intro").addEventListener("click", openLetter);
+$("intro").addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") openLetter(); });
+</script>
+</body>
+</html>
